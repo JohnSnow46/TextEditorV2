@@ -28,7 +28,10 @@ namespace TextEditorV2.Controllers
         // GET: Docs
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Docs.Include(d => d.User);
+            var applicationDbContext = from c in _context.Docs
+                                       select c;
+            applicationDbContext = applicationDbContext.Where(a => a.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -161,5 +164,8 @@ namespace TextEditorV2.Controllers
         {
             return _context.Docs.Any(e => e.Id == id);
         }
+
+        //TODO
+        //CREATE DELETE EDIT PAGES STYLING
     }
 }

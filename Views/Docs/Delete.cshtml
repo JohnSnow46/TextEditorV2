@@ -21,13 +21,7 @@
             @Html.DisplayNameFor(model => model.Text)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Text)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.Id)
+            <textarea id="tiny" style="width: 30vw; height: 40vh" asp-for="Text" class="form-control"></textarea>
         </dd>
     </dl>
     
